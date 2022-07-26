@@ -1,29 +1,52 @@
 import React from 'react';
-import styled from 'styled-components';
+import { View } from 'react-native';
+import styled from 'styled-components/native';
 
-export default function Empty() {
+export default function TodoList({ item }) {
   return (
     <ComponentContainer>
-      <EmptyImage source={require('add an image here')} />
-      <EmptyText>Add To-Do.</EmptyText>
+      <ListContainer>
+        <View>
+          <TextItem>{item.value}</TextItem>
+          <TextTask> Task</TextTask>
+        </View>
+      </ListContainer>
     </ComponentContainer>
   );
 }
 
-const ComponentContainer = styled.View`
-  align-items: center;
-  justify-content: center;
-  height: 650px;
-`;
-
-const EmptyImage = styled.Image`
+const ListContainer = styled.TouchableOpacity`
+  background-color: whitesmoke;
+  height: auto;
   width: 350px;
-  height: 200px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
-const EmptyText = styled.Text`
-  color: white;
-  font-family: poppins-bold;
-  margin-top: 30px;
-  font-size: 30px;
+const ComponentContainer = styled.View`
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+  width: auto;
+`;
+
+const TextItem = styled.Text`
+  color: black;
+  width: 260px;
+  height: auto;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-right: 20px;
+  font-family: poppins-regular;
+`;
+
+const TextTask = styled.Text`
+  color: goldenrod;
+  font-size: 15px;
+  margin-right: 20px;
+  font-family: poppins-regular;
+  border-radius: 10px;
+  width: 40px;
 `;

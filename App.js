@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StatusBar, FlatList } from 'react-native';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import AddInput from './components/AddInput';
 import TodoList from './components/TodoList';
 
@@ -17,25 +17,26 @@ export default function App() {
         ...prevTodo,
       ];
     });
-
-    return (
-      <ComponentContainer>
-        <View>
-          <StatusBar barStyle="light-content" backgroundColor="midnightblue" />
-        </View>
-
-        <View>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => <TodoList item={item} />}
-          />
-          <View>
-            <AddInput submitHandler={submitHandler} />
-          </View>
-        </View>
-      </ComponentContainer>
-    );
   };
+
+  return (
+    <ComponentContainer>
+      <View>
+        <StatusBar barStyle="light-content" backgroundColor="midnightblue" />
+      </View>
+
+      <View>
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => <TodoList item={item} />}
+        />
+        <View>
+          <AddInput submitHandler={submitHandler} />
+        </View>
+      </View>
+    </ComponentContainer>
+  );
 }
 
 const ComponentContainer = styled.View`
