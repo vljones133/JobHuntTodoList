@@ -2,47 +2,62 @@ import React, { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
-import { firebase } from '../../firebase/config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../../firebase/config';
+import { doc, setDoc } from 'firebase/firestore';
+import { Alert } from 'react-native';
 
 export default function RegistrationScreen({ navigation }) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [verifyPassword, setVerifyPassword] = useState('');
+  const [fullNameError, setFullNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const onFooterLinkPress = () => {
     navigation.navigate('Login');
   };
 
-  const onRegisterPress = () => {
-    if (password !== confirmPassword) {
-      alert("Passwords don't match.");
-      return;
-    }
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const uid = response.user.uid;
-        const data = {
-          id: uid,
-          email,
-          fullName,
-        };
-        const usersRef = firebase.firestore().collection('users');
-        usersRef
-          .doc(uid)
-          .set(data)
-          .then(() => {
-            navigation.navigate('Home', { user: data });
-          })
-          .catch((error) => {
-            alert(error);
-          });
-      })
-      .catch((error) => {
-        alert(error);
+  // const validate = () => {
+  //   if (email === '') {
+  //     setEmailError('Please enter a valid email.');
+  //   }
+  //   if (password === '' || verifyPassword === '') {
+  //     setPasswordError('Please enter a password.');
+  //   } else if (password !== verifyPassword) {
+  //     setPasswordError('Passwords do not match.');
+  //   }
+  //   if (fullName === '') {
+  //     setFullNameError('Please enter your name.');
+  //   }
+  //   if (setFullNameError || emailError || passwordError) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // };
+
+  const onRegisterPress = async () => {
+    console.log('ON REGISTER PRESS');
+    // if (validate()) {
+    // console.log('FIELDS VALIDATED');
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log('CREATED USER');
+      await setDoc(doc(db, 'users', auth.currentUser.uid), {
+        fullName: fullName,
       });
+      console.log('SET DOC');
+      // navigation.push('Nav Bar');
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Alert.alert('Sign up failed', 'Please try again.');
+    }
+    // }
   };
 
   return (
