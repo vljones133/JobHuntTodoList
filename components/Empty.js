@@ -1,15 +1,19 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import * as SplashScreen from 'expo-splash-screen';
+// import { useFonts, Inspiration_400Regular } from '@expo-google-fonts/inter';
+import { useFonts } from 'expo-font';
 
 export default function Empty() {
+  let [fontsLoaded] = useFonts({
+    Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
+  });
+
+  SplashScreen.preventAutoHideAsync();
+
   return (
     <ComponentContainer>
-      <EmptyImage
-        source={
-          'https://s3.us-east-1.amazonaws.com/fsa2-assets/assets/Grace-Hopper/GH-Full-Lockup-Chalk.png'
-        }
-      />
-      <EmptyText>Add To-Do.</EmptyText>
+      <EmptyText>Hey, Go Getter!</EmptyText>
     </ComponentContainer>
   );
 }
@@ -17,17 +21,12 @@ export default function Empty() {
 const ComponentContainer = styled.View`
   align-items: center;
   justify-content: center;
-  height: 650px;
-`;
-
-const EmptyImage = styled.Image`
-  width: 350px;
-  height: 200px;
+  /* height: 650px; */
 `;
 
 const EmptyText = styled.Text`
   color: palevioletred;
-  font-family: poppins-bold;
+  font-family: 'Inspiration';
   margin-top: 30px;
-  font-size: 30px;
+  font-size: 65px;
 `;

@@ -42,11 +42,13 @@ export default function HomeScreen(props) {
     setInput('');
   };
 
-  const renderTask = ({ item, index }) => {
+  const renderTask = ({ item, id, index, task }) => {
+    // console.log(`Item ${item}, Index ${index}`);
+    console.log('Item ', item, index);
     return (
       <View style={styles.taskContainer}>
-        <Text style={styles.taskText}>
-          {index}. {item.text}
+        <Text style={styles.taskText} id={item.id}>
+          {item.text}
         </Text>
       </View>
     );
@@ -73,8 +75,8 @@ export default function HomeScreen(props) {
           <FlatList
             data={tasks}
             renderItem={renderTask}
-            keyExtractor={(item) => item.id}
-            removeClippedSubviews={true}
+            keyExtractor={(item, index) => index}
+            // removeClippedSubviews={true}
           />
         </View>
       )}
