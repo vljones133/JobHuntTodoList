@@ -21,9 +21,14 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         {user ? (
-          <Stack.Screen name="Home">
-            {(props) => <HomeScreen {...props} extraData={user} />}
-          </Stack.Screen>
+          // <Stack.Screen name="Home">
+          //   {(props) => <HomeScreen {...props} extraData={user} />}
+          // </Stack.Screen>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={(props) => <HomeScreen {...props} extraData={user} />}
+          />
         ) : (
           <>
             <Stack.Screen name="Login" component={LoginScreen} />
