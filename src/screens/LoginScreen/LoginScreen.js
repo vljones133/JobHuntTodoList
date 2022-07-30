@@ -4,14 +4,12 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { auth } from '../../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { Alert } from 'react-native';
-// import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getAuth } from 'firebase/auth';
-
 import styles from './styles';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
 
   const onFooterLinkPress = () => {
     navigation.navigate('Registration');
@@ -25,7 +23,10 @@ export default function LoginScreen({ navigation }) {
       auth.onAuthStateChanged((user) => {
         if (user) {
           console.log('USER', user);
-          navigation.navigate('Home', { user });
+          setUser(user);
+          navigation.navigate('HomeScreen');
+
+          // navigation.navigate('HomeScreen', { user });
           // User is signed in, see docs for a list of available properties
           // https://firebase.google.com/docs/reference/js/firebase.User
         } else {
