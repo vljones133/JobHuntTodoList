@@ -1,48 +1,36 @@
-import React, { useState } from 'react';
-import { View, StatusBar, FlatList } from 'react-native';
-import styled from 'styled-components/native';
-import AddInput from './components/AddInput';
-import TodoList from './components/TodoList';
-
-export default function App() {
-  const [data, setData] = useState([]);
-
-  const submitHandler = (value) => {
-    setData((prevTodo) => {
-      return [
-        {
-          value: value,
-          key: Math.random().toString(),
-        },
-        ...prevTodo,
-      ];
-    });
-  };
-
-  return (
-    <ComponentContainer>
-      <View>
-        <StatusBar barStyle="light-content" backgroundColor="midnightblue" />
-      </View>
-
-      <View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.key}
-          renderItem={({ item }) => <TodoList item={item} />}
-        />
-        <View>
-          <AddInput submitHandler={submitHandler} />
-        </View>
-      </View>
-    </ComponentContainer>
-  );
+import 'react-native-gesture-handler';
+import React, { useEffect, useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { LoginScreen, HomeScreen, RegistrationScreen } from './src/screens';
+import { decode, encode } from 'base-64';
+if (!global.btoa) {
+  global.btoa = encode;
+}
+if (!global.atob) {
+  global.atob = decode;
 }
 
-const ComponentContainer = styled.View`
-  background-color: midnightblue;
-  height: 100%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+const Stack = createStackNavigator();
+
+export default function App() {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        {user ? (
+          <Stack.Screen name="Home">
+            {(props) => <HomeScreen {...props} extraData={user} />}
+          </Stack.Screen>
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Registration" component={RegistrationScreen} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}

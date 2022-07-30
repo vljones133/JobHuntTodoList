@@ -45,10 +45,15 @@ const Input = styled.TextInput`
 `;
 
 const SubmitButton = styled.TouchableOpacity`
-  width: 50px;
-  justify-content: center;
-  align-items: center;
-  background-color: whitesmoke;
-  margin-bottom: 20px;
-  border-radius: 50px;
+  background: ${(props) => (props.primary ? 'palevioletred' : 'white')};
+  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.25em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
+
+const StyledText = styled.Text`
+  color: 'palevioletred';
 `;

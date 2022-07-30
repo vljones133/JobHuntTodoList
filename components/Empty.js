@@ -4,7 +4,11 @@ import styled from 'styled-components/native';
 export default function Empty() {
   return (
     <ComponentContainer>
-      <EmptyImage source={require('add an image here')} />
+      <EmptyImage
+        source={
+          'https://s3.us-east-1.amazonaws.com/fsa2-assets/assets/Grace-Hopper/GH-Full-Lockup-Chalk.png'
+        }
+      />
       <EmptyText>Add To-Do.</EmptyText>
     </ComponentContainer>
   );
@@ -22,7 +26,7 @@ const EmptyImage = styled.Image`
 `;
 
 const EmptyText = styled.Text`
-  color: white;
+  color: palevioletred;
   font-family: poppins-bold;
   margin-top: 30px;
   font-size: 30px;
