@@ -10,7 +10,7 @@ export default function Header() {
     await Font.loadAsync({
       Assistant: require('../assets/fonts/Assistant-Light.ttf'),
     });
-  // let [fontsLoaded] = useFonts({
+  // const [fontsLoaded] = useFonts({
   //   Assistant: require('../assets/fonts/Assistant-Light.ttf'),
   // });
 
@@ -35,16 +35,17 @@ const ComponentContainer = styled.View`
   justify-content: space-between;
   align-items: center;
   align-content: flex-start;
+  padding: 10px;
 `;
 
 const HeaderText = styled.Text`
-  color: palevioletred;
-  font-family: 'Assistant', 'Avenir Book', sans-serif;
-  font-size: 30px;
+  color: slateblue;
+  font-family: 'Verdana';
+  font-size: 25px;
 `;
 
 const HeaderList = styled.Text`
-  color: palevioletred !important;
-  font-family: 'Assistant', 'Avenir Book', sans-serif;
+  color: slateblue !important;
+  font-family: 'Verdana';
   font-size: 20px;
 `;

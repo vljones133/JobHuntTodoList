@@ -9,13 +9,13 @@ export default function TodoList({ item, deleteItem }) {
     <ComponentContainer>
       <ListContainer>
         <CirlceContainer>
-          <Entypo name="circle" size={20} color="midnightblue" />
+          <Entypo name="circle" size={20} color="slateblue" />
         </CirlceContainer>
         <View>
           <TextItem>{item.value}</TextItem>
         </View>
         <IconContainer onPress={() => deleteItem(item.key)}>
-          <MaterialIcons name="delete" size={24} color="midnightblue" />
+          <MaterialIcons name="delete" size={24} color="slateblue" />
         </IconContainer>
       </ListContainer>
     </ComponentContainer>
@@ -30,38 +30,33 @@ const ListContainer = styled.TouchableOpacity`
   border-radius: 10px;
   flex-direction: row;
   justify-content: space-between;
+  padding: 5px;
 `;
 
 const ComponentContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   width: auto;
+  align-content: center;
+  align-items: center;
 `;
 
 const TextItem = styled.Text`
-  color: palevioletred;
+  color: darkslateblue;
   width: 260px;
   height: auto;
   font-size: 20px;
-  margin-top: 10px;
+  margin-left: 10px;
   margin-right: 20px;
-  font-family: poppins-regular;
-`;
-
-const TextDate = styled.Text`
-  color: palevioletred;
-  font-size: 15px;
-  margin-right: 20px;
-  font-family: poppins-regular;
-  border-radius: 10px;
-  width: 40px;
+  margin-top: 6px;
+  font-family: Verdana;
+  align-items: center;
 `;
 
 const IconContainer = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  margin-top: 15px;
   height: 40px;
   border-radius: 10px;
 `;

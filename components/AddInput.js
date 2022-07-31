@@ -30,7 +30,7 @@ export default function AddInput({ submitHandler }) {
           setValue('');
         }}
       >
-        <Text style={[styles.pink, styles.size18]}>Submit</Text>
+        <Text style={[styles.purple, styles.size18]}>Submit</Text>
       </SubmitButton>
     </ComponentContainer>
   );
@@ -49,28 +49,26 @@ const InputContainer = styled.View`
 const Input = styled.TextInput`
   font-size: 20px;
   background-color: white;
-  width: 300px;
-  margin-right: 20px;
+  width: 230px;
+  margin: 0 10px;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #333;
+  border: 1px solid darkslateblue;
+  /*font-family: 'Assistant';
+  font-size: 20px;*/
 `;
 
 const SubmitButton = styled.TouchableOpacity`
-  color: palevioletred;
+  color: slateblue;
   margin: 10px;
   padding: 10px 20px;
-  border: 2px solid palevioletred;
+  border: 2px solid slateblue;
   border-radius: 5px;
 `;
 
-// const StyledText = styled.Text`
-//   color: 'palevioletred';
-// `;
-
 const styles = StyleSheet.create({
-  pink: {
-    color: 'palevioletred',
+  purple: {
+    color: 'slateblue',
   },
   size18: {
     fontSize: 18,

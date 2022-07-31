@@ -8,7 +8,7 @@ export default function Empty() {
     await Font.loadAsync({
       Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
     });
-  // let [fontsLoaded] = useFonts({
+  // const [fontsLoaded] = useFonts({
   //   Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
   // });
 
@@ -20,7 +20,7 @@ export default function Empty() {
 
   return (
     <ComponentContainer>
-      <EmptyText>Hey, Go Getter!</EmptyText>
+      <EmptyText>Hey, Go-Getter!</EmptyText>
     </ComponentContainer>
   );
 }
@@ -28,11 +28,13 @@ export default function Empty() {
 const ComponentContainer = styled.View`
   align-items: center;
   justify-content: center;
-  height: 650px;
+  height: 540px;
 `;
 
 const EmptyText = styled.Text`
-  color: palevioletred;
-  font-family: 'Inspiration', Zapfino, cursive;
-  font-size: 65px;
+  color: lightseagreen;
+  font-family: 'Zapfino';
+  font-size: 40px;
+  /*font-family: 'Inspiration';
+  font-size: 65px;*/
 `;
