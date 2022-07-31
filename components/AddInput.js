@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import styled from 'styled-components/native';
 
 export default function AddInput({ submitHandler }) {
@@ -12,14 +18,19 @@ export default function AddInput({ submitHandler }) {
   return (
     <ComponentContainer>
       <InputContainer>
-        <Input placeholder="Add Task..." onChangeText={onChangeText} />
+        <Input
+          placeholder="Add Task..."
+          onChangeText={onChangeText}
+          value={value}
+        />
       </InputContainer>
       <SubmitButton
         onPress={() => {
           setValue(submitHandler(value));
+          setValue('');
         }}
       >
-        <Text>Submit</Text>
+        <Text style={[styles.pink, styles.size18]}>Submit</Text>
       </SubmitButton>
     </ComponentContainer>
   );
@@ -27,6 +38,7 @@ export default function AddInput({ submitHandler }) {
 
 const ComponentContainer = styled.View`
   flex-direction: row;
+  align-items: center;
 `;
 
 const InputContainer = styled.View`
@@ -40,20 +52,27 @@ const Input = styled.TextInput`
   width: 300px;
   margin-right: 20px;
   padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
 `;
 
 const SubmitButton = styled.TouchableOpacity`
-  background: ${(props) => (props.primary ? 'palevioletred' : 'white')};
-  color: ${(props) => (props.primary ? 'white' : 'palevioletred')};
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
+  color: palevioletred;
+  margin: 10px;
+  padding: 10px 20px;
   border: 2px solid palevioletred;
-  border-radius: 3px;
+  border-radius: 5px;
 `;
 
-const StyledText = styled.Text`
-  color: 'palevioletred';
-`;
+// const StyledText = styled.Text`
+//   color: 'palevioletred';
+// `;
+
+const styles = StyleSheet.create({
+  pink: {
+    color: 'palevioletred',
+  },
+  size18: {
+    fontSize: 18,
+  },
+});

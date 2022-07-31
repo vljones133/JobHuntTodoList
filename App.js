@@ -4,14 +4,13 @@ import styled from 'styled-components/native';
 import AddInput from './components/AddInput';
 import TodoList from './components/TodoList';
 import Header from './components/Header';
+// import NewHeader from './components/NewHeader';
 import Empty from './components/Empty';
 // import AppLoading from 'expo-app-loading';
 // import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
 export default function App() {
   const [data, setData] = useState([]);
-
-
 
   const submitHandler = (value) => {
     setData((prevTodo) => {
@@ -38,7 +37,16 @@ export default function App() {
       </View>
 
       <View>
+        {/* <Header />
+        <Empty />
         <FlatList
+          data={data}
+          keyExtractor={(item) => item.key}
+          renderItem={({ item }) => (
+            <TodoList item={item} deleteItem={deleteItem} />
+          )}
+        /> */}
+        <StyledFlatList
           data={data}
           ListHeaderComponent={() => <Header />}
           ListEmptyComponent={() => <Empty />}
@@ -56,9 +64,14 @@ export default function App() {
 }
 
 const ComponentContainer = styled.View`
-  background-color: papayawhip;
-  height: 100%;
+  background-color: white;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  min-height: 650px;
+`;
+
+const StyledFlatList = styled.FlatList`
+  height: 750px;
 `;

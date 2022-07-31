@@ -13,7 +13,7 @@ export default function TodoList({ item, deleteItem }) {
         </CirlceContainer>
         <View>
           <TextItem>{item.value}</TextItem>
-          <TextDate> Task</TextDate>
+          {/* <TextDate> Task</TextDate> */}
         </View>
         <IconContainer onPress={() => deleteItem(item.key)}>
           <MaterialIcons name="delete" size={24} color="midnightblue" />
@@ -36,7 +36,6 @@ const ListContainer = styled.TouchableOpacity`
 const ComponentContainer = styled.View`
   flex-direction: row;
   justify-content: center;
-  height: auto;
   width: auto;
 `;
 

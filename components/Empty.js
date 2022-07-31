@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import * as SplashScreen from 'expo-splash-screen';
-// import { useFonts, Inspiration_400Regular } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
 
 export default function Empty() {
@@ -21,12 +20,12 @@ export default function Empty() {
 const ComponentContainer = styled.View`
   align-items: center;
   justify-content: center;
-  /* height: 650px; */
+  height: 650px;
 `;
 
 const EmptyText = styled.Text`
   color: palevioletred;
   font-family: 'Inspiration';
-  margin-top: 30px;
+  /*margin-top: 30px;*/
   font-size: 65px;
 `;
