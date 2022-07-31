@@ -4,10 +4,12 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
 export default function Empty() {
+  //this block of code works for iOS simulator only
   const fetchFonts = async () =>
     await Font.loadAsync({
       Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
     });
+  //this block of code works for web browser only
   // const [fontsLoaded] = useFonts({
   //   Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
   // });

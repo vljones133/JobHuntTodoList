@@ -4,12 +4,13 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
 let today = new Date().toISOString().slice(0, 10);
-
+//this block of code works for iOS simulator only
 export default function Header() {
   const fetchFonts = async () =>
     await Font.loadAsync({
       Assistant: require('../assets/fonts/Assistant-Light.ttf'),
     });
+  //this block of code works for web browser only
   // const [fontsLoaded] = useFonts({
   //   Assistant: require('../assets/fonts/Assistant-Light.ttf'),
   // });
