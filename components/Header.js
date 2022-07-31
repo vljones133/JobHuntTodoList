@@ -6,11 +6,19 @@ import { useFonts } from 'expo-font';
 let today = new Date().toISOString().slice(0, 10);
 
 export default function Header() {
-  let [fontsLoaded] = useFonts({
-    Assistant: require('../assets/fonts/Assistant-Light.ttf'),
-  });
+  const fetchFonts = async () =>
+    await Font.loadAsync({
+      Assistant: require('../assets/fonts/Assistant-Light.ttf'),
+    });
+  // let [fontsLoaded] = useFonts({
+  //   Assistant: require('../assets/fonts/Assistant-Light.ttf'),
+  // });
 
-  SplashScreen.preventAutoHideAsync();
+  // SplashScreen.preventAutoHideAsync();
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   return (
     <ComponentContainer>
@@ -31,13 +39,12 @@ const ComponentContainer = styled.View`
 
 const HeaderText = styled.Text`
   color: palevioletred;
-  font-family: 'Assistant';
+  font-family: 'Assistant', 'Avenir Book', sans-serif;
   font-size: 30px;
 `;
 
 const HeaderList = styled.Text`
   color: palevioletred !important;
-  font-family: 'Assistant';
+  font-family: 'Assistant', 'Avenir Book', sans-serif;
   font-size: 20px;
-  /*margin-right: 20px;*/
 `;

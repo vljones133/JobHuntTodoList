@@ -4,10 +4,7 @@ import styled from 'styled-components/native';
 import AddInput from './components/AddInput';
 import TodoList from './components/TodoList';
 import Header from './components/Header';
-// import NewHeader from './components/NewHeader';
 import Empty from './components/Empty';
-// import AppLoading from 'expo-app-loading';
-// import { useFonts, Inter_900Black } from '@expo-google-fonts/inter';
 
 export default function App() {
   const [data, setData] = useState([]);

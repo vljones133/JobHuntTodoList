@@ -4,11 +4,19 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 
 export default function Empty() {
-  let [fontsLoaded] = useFonts({
-    Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
-  });
+  const fetchFonts = async () =>
+    await Font.loadAsync({
+      Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
+    });
+  // let [fontsLoaded] = useFonts({
+  //   Inspiration: require('../assets/fonts/Inspiration-Regular.ttf'),
+  // });
 
-  SplashScreen.preventAutoHideAsync();
+  // SplashScreen.preventAutoHideAsync();
+
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   return (
     <ComponentContainer>
@@ -25,7 +33,6 @@ const ComponentContainer = styled.View`
 
 const EmptyText = styled.Text`
   color: palevioletred;
-  font-family: 'Inspiration';
-  /*margin-top: 30px;*/
+  font-family: 'Inspiration', Zapfino, cursive;
   font-size: 65px;
 `;
